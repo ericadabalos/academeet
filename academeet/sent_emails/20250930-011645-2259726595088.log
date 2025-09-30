@@ -1,0 +1,15 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Subject: Your password reset link
+From: academeet.23@gmail.com
+To: kaitlin.nayde02@gmail.com
+Date: Mon, 29 Sep 2025 17:16:45 -0000
+Message-ID: <175916620514.30776.14974801972816243359@DESKTOP-CRUKR12>
+
+We received a request to reset your password.
+
+Use this link to proceed: http://localhost:8000/reset/?email=kaitlin.nayde02@gmail.com
+
+If you did not request a password reset, you can ignore this message.
+-------------------------------------------------------------------------------
