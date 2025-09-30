@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professor Dashboard - Academeet</title>
+    <link rel="stylesheet" href="{% static 'core/css/professor_dashboard.css' %}">
+</head>
+<body>
+    <div class="bg-shape"></div>
+    <div class="bg-shape"></div>
+
+    <header class="dashboard-header">
+        <h1>Academeet</h1>
+        <h2>My Dashboard</h2>
+    </header>
+
+    <main class="dashboard-container">
+        <table class="schedule-table">
+            <thead>
+                <tr>
+                    <th class="time-col">Time</th>
+                    <th>Monday</th>
+                    <th>Tuesday</th>
+                    <th>Wednesday</th>
+                    <th>Thursday</th>
+                    <th>Friday</th>
+                    <th>Saturday</th>
+                    <th>Sunday</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for hour in hours %}
+                    <tr>
+                        <td class="time-cell">{{ hour }}</td>
+                        {% for day in days %}
+                            <td class="schedule-cell"></td>
+                        {% endfor %}
+                    </tr>
+                    <tr>
+                        <td class="time-cell bold-time">{{ hour|add:":30" }}</td>
+                        {% for day in days %}
+                            <td class="schedule-cell"></td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+
+    <div class="dashboard-actions">
+        <!-- Links to Django views -->
+        <a href="{% url 'add_schedule' %}" class="btn add-btn">+ Add Schedule</a>
+        <!-- Edit is usually per schedule, but for now a placeholder -->
+        <a href="{% url 'add_schedule' %}" class="btn edit-btn">✎ Edit Schedule</a>
+    </div>
+</body>
+</html>

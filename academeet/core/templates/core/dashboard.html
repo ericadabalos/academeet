@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - Academeet</title>
+</head>
+<body>
+    <h1>Welcome to the Dashboard</h1>
+    <p>You are now logged in as <strong>{{ request.user.username }}</strong>.</p>
+
+    <ul>
+        <li><a href="{% url 'role_selection' %}">Go to Role Selection</a></li>
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+    </ul>
+</body>
+</html>
