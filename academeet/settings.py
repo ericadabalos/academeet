@@ -12,10 +12,13 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 import os
 from pathlib import Path
 
-#new
+# new
 import dj_database_url
 from dotenv import load_dotenv
-load_dotenv()  # Load .env file
+# Load .env only if the project explicitly allows it (prevents automatic use of a production DATABASE_URL
+# stored in .env when developing locally). Set USE_ENV_FILE=1 to enable loading the .env file.
+if os.getenv("USE_ENV_FILE", "0") in ("1", "true", "yes"):
+    load_dotenv()
 
 
 
@@ -81,22 +84,26 @@ WSGI_APPLICATION = 'academeet.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
-    #'default': {
-     #   'ENGINE': 'django.db.backends.sqlite3',
-      #  'NAME': BASE_DIR / 'db.sqlite3',
-      
-      
-      # Database configuration using Supabase Session Pooler 
-
-
-    #new
-    "default": dj_database_url.config( 
-        default="sqlite:///db.sqlite3", 
-        conn_max_age=600,    # persistent connections 
-        ssl_require=True     # enforce SSL 
-)
-}
+# Use DATABASE_URL (12-factor) when provided, otherwise fall back to local sqlite
+DATABASE_URL = os.getenv("DATABASE_URL")
+if DATABASE_URL:
+    # Parse the database URL (Postgres, MySQL, etc.) for production environments
+    DATABASES = {
+        "default": dj_database_url.parse(
+            DATABASE_URL,
+            conn_max_age=600,
+            # Allow disabling SSL enforcement via env in dev if needed
+            ssl_require=os.getenv("DB_SSL", "False").lower() in ("1", "true", "yes"),
+        )
+    }
+else:
+    # Simple local sqlite database for development (no additional DB drivers required)
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
+    }
 
 
 # Password validation
@@ -142,3 +149,8 @@ STATICFILES_DIRS = [BASE_DIR / "academeet" / "static"]
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Where to redirect for login-required pages
+LOGIN_URL = '/'
+# Default redirect after login (can be a URL name)
+LOGIN_REDIRECT_URL = '/dashboard/'

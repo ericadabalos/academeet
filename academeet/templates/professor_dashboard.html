@@ -1,0 +1,370 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professor Dashboard - Academeet</title>
+    <link rel="stylesheet" href="{% static 'core/css/professor_dashboard.css' %}">
+</head>
+<body>
+    <div class="bg-shape"></div>
+    <div class="bg-shape"></div>
+    <div class="bg-shape"></div>
+
+    <!-- Header -->
+    <header class="dashboard-header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/>
+                        <path d="M9 12l2 2 4-4"/>
+                    </svg>
+                </div>
+                <h1>Academeet</h1>
+            </div>
+            <div class="user-section">
+                <span class="user-name">{{ user_name }}</span>
+                <a href="{% url 'logout' %}" class="logout-btn">Logout</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+        <div class="dashboard-container">
+            <div class="dashboard-title">
+                <h2>My Dashboard</h2>
+                <p class="subtitle">Manage your weekly schedule</p>
+            </div>
+
+            <!-- Schedule Table -->
+            <div class="schedule-wrapper">
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th class="time-column">Time</th>
+                            <th>Monday</th>
+                            <th>Tuesday</th>
+                            <th>Wednesday</th>
+                            <th>Thursday</th>
+                            <th>Friday</th>
+                            <th>Saturday</th>
+                            <th>Sunday</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="time-cell">07:00 AM</td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                        </tr>
+                        <tr class="half-hour">
+                            <td class="time-cell bold-time">07:30 AM</td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                        </tr>
+                        <tr>
+                            <td class="time-cell">08:00 AM</td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                        </tr>
+                        <tr class="half-hour">
+                            <td class="time-cell bold-time">08:30 AM</td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                        </tr>
+                        <tr>
+                            <td class="time-cell">09:00 AM</td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                        </tr>
+                        <tr class="half-hour">
+                            <td class="time-cell bold-time">09:30 AM</td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                        </tr>
+                        <tr>
+                            <td class="time-cell">10:00 AM</td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                        </tr>
+                        <tr class="half-hour">
+                            <td class="time-cell bold-time">10:30 AM</td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                        </tr>
+                        <tr>
+                            <td class="time-cell">11:00 AM</td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                        </tr>
+                        <tr class="half-hour">
+                            <td class="time-cell bold-time">11:30 AM</td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                        </tr>
+                        <tr>
+                            <td class="time-cell">12:00 PM</td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                        </tr>
+                        <tr class="half-hour">
+                            <td class="time-cell bold-time">12:30 PM</td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                        </tr>
+                        <tr>
+                            <td class="time-cell">01:00 PM</td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                        </tr>
+                        <tr class="half-hour">
+                            <td class="time-cell bold-time">01:30 PM</td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                        </tr>
+                        <tr>
+                            <td class="time-cell">02:00 PM</td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                        </tr>
+                        <tr class="half-hour">
+                            <td class="time-cell bold-time">02:30 PM</td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                        </tr>
+                        <tr>
+                            <td class="time-cell">03:00 PM</td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                        </tr>
+                        <tr class="half-hour">
+                            <td class="time-cell bold-time">03:30 PM</td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                        </tr>
+                        <tr>
+                            <td class="time-cell">04:00 PM</td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                        </tr>
+                        <tr class="half-hour">
+                            <td class="time-cell bold-time">04:30 PM</td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                        </tr>
+                        <tr>
+                            <td class="time-cell">05:00 PM</td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                        </tr>
+                        <tr class="half-hour">
+                            <td class="time-cell bold-time">05:30 PM</td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                        </tr>
+                        <tr>
+                            <td class="time-cell">06:00 PM</td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                        </tr>
+                        <tr class="half-hour">
+                            <td class="time-cell bold-time">06:30 PM</td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                        </tr>
+                        <tr>
+                            <td class="time-cell">07:00 PM</td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                        </tr>
+                        <tr class="half-hour">
+                            <td class="time-cell bold-time">07:30 PM</td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                        </tr>
+                        <tr>
+                            <td class="time-cell">08:00 PM</td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                        </tr>
+                        <tr class="half-hour">
+                            <td class="time-cell bold-time">08:30 PM</td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                        </tr>
+                        <tr>
+                            <td class="time-cell">09:00 PM</td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                        </tr>
+                        <tr class="half-hour">
+                            <td class="time-cell bold-time">09:30 PM</td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                            <td class="schedule-cell"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="btn btn-primary">Add Schedule</button>
+                <button class="btn btn-secondary">Edit Schedule</button>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

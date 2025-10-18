@@ -1,146 +1,237 @@
-/* Reset default margin/padding */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* General Page Styling */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f6f9;
-    color: #333;
+    background: linear-gradient(to bottom, #d7ab1c, #7d6a12);
+    min-height: 100vh;
 }
 
-/* Navbar (for home/dashboard) */
-.navbar {
-    background: #007bff;
-    padding: 15px;
+/* Header section */
+.header {
+    background-color: white;
+    padding: 15px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.navbar h1 {
-    font-size: 20px;
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+/* Logo colors (match your palette) */
+:root {
+  --logo-red-1: #AC0000;
+  --logo-red-2: #800000;
+  --logo-white: #FFFFFF;
 }
 
-.navbar a {
-    color: white;
-    margin-left: 15px;
-    text-decoration: none;
+/* Container: red rounded square with subtle shadow */
+.logo {
+  width: 48px;               /* adjust size as needed */
+  height: 48px;
+  border-radius: 10px;      /* rounded corners */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--logo-red-1), var(--logo-red-2));
+  box-shadow: 0 6px 22px rgba(172, 0, 0, 0.25), inset 0 1px 0 rgba(255,255,255,0.06);
+  -webkit-font-smoothing: antialiased;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+/* small hover lift (optional) */
+.logo:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(172, 0, 0, 0.30), inset 0 1px 0 rgba(255,255,255,0.06);
+}
+
+/* White inner shield/house using clip-path */
+.logo-shape {
+  width: 24px;
+  height: 24px;
+  background: var(--logo-white);
+  border-radius: 4px;
+  /* shield/house polygon shape */
+  clip-path: polygon(
+    50% 8%,   /* top point */
+    85% 22%,
+    85% 78%,
+    50% 92%,
+    15% 78%,
+    15% 22%
+  );
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+}
+
+/* Responsive scaling helper (optional) */
+.logo.small  { width: 36px; height: 36px; }
+.logo.small .logo-shape { width: 18px; height: 18px; }
+
+.logo.large  { width: 64px; height: 64px; }
+.logo.large .logo-shape { width: 30px; height: 30px; }
+
+.logo-text {
+    font-size: 24px;
     font-weight: bold;
+    color: #8B0000;
 }
 
-.navbar a:hover {
-    text-decoration: underline;
+/* User section */
+.user-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
-/* Container (used for forms and dashboard cards) */
-.container {
-    width: 400px;
-    margin: 60px auto;
-    padding: 20px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+.username {
+    color: #8B0000;
+    font-weight: 500;
 }
 
-/* Page Titles */
-h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #007bff;
-}
-
-/* Input fields */
-input[type="text"], 
-input[type="password"], 
-input[type="email"] {
-    width: 100%;
-    padding: 10px;
-    margin: 8px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-/* Buttons */
-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    border: none;
-    border-radius: 5px;
+.logout-btn {
+    background: linear-gradient(135deg, #8B0000 0%, #5C0000 100%);
     color: white;
-    font-size: 16px;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background 0.3s ease;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(139, 0, 0, 0.2);
 }
 
-button:hover {
-    background-color: #0056b3;
+.logout-btn:hover {
+    background: linear-gradient(135deg, #a00000 0%, #6B0000 100%);
 }
 
-button:active {
-    background-color: #004494;
-}
-
-/* Links under forms */
-.form-footer {
-    text-align: center;
-    margin-top: 10px;
-}
-
-.form-footer a {
-    color: #007bff;
-    text-decoration: none;
-}
-
-.form-footer a:hover {
-    text-decoration: underline;
-}
-
-/* Dashboard content */
-.dashboard {
-    max-width: 800px;
+/* Dashboard container */
+.container {
+    max-width: 1400px;
     margin: 40px auto;
-    padding: 20px;
+    padding: 0 20px;
 }
 
-.dashboard h2 {
-    margin-bottom: 20px;
+.dashboard-card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-.card {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-    margin-bottom: 20px;
+.dashboard-header {
+    text-align: center;
+    margin-bottom: 30px;
 }
 
-/* ====== NEW: Form Box Styling ====== */
-.form-box {
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 30px 25px;
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+.dashboard-title {
+    color: #8B0000;
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 8px;
 }
 
-.form-box input[type="text"],
-.form-box input[type="password"],
-.form-box input[type="email"] {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
+.dashboard-subtitle {
+    color: #8B0000;
+    font-size: 16px;
+}
+
+/* Filters section */
+.filters-section {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.filter-select, .search-input {
+    padding: 10px 15px;
     border: 1px solid #ccc;
-    border-radius: 6px;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: white;
 }
 
-.form-box button {
-    margin-top: 10px;
+.filter-select {
+    min-width: 150px;
+}
+
+.search-input {
+    min-width: 200px;
+}
+
+.apply-filter-btn {
+    background: linear-gradient(135deg, #8B0000 0%, #5C0000 100%);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    box-shadow: 0 2px 4px rgba(139, 0, 0, 0.2);
+}
+
+.apply-filter-btn:hover {
+    background: linear-gradient(135deg, #a00000 0%, #6B0000 100%);
+}
+
+/* Schedule table */
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.schedule-table thead {
+    background: linear-gradient(135deg, #8B0000 0%, #5C0000 100%);
+    color: white;
+}
+
+.schedule-table th {
+    padding: 15px 10px;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid #6B0000;
+}
+
+.schedule-table td {
+    padding: 12px 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+    min-height: 50px;
+}
+
+.time-cell {
+    background-color: white;
+    color: #8B0000;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.schedule-table tbody tr:nth-child(even) td:not(.time-cell) {
+    background-color: #fffacd;
+}
+
+.schedule-table tbody tr:nth-child(odd) td:not(.time-cell) {
+    background-color: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .filters-section {
+        flex-direction: column;
+    }
+
+    .filter-select, .search-input {
+        width: 100%;
+    }
 }
