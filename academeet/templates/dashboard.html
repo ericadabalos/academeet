@@ -1,13 +1,86 @@
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/style.css' %}">
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Dashboard - Academeet</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academeet - Student Dashboard</title>
+    <link rel="stylesheet" href="{% static 'core/css/dashboard.css' %}">
 </head>
 <body>
-    <h2>Welcome to your Dashboard, {{ user.username }}!</h2>
-    <p>You are now logged in.</p>
+    <div class="header">
+        <div class="logo-section">
+            <div class="logo">
+                <div class="logo-icon"></div>
+            </div>
+            <div class="logo-text">Academeet</div>
+        </div>
+        <div class="user-section">
+                <span class="user-name">{{ user_name }}</span>
+            <form method="POST" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit" class="logout-btn">Logout</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="dashboard-card">
+            <div class="dashboard-header">
+                <h1 class="dashboard-title">My Dashboard</h1>
+                <p class="dashboard-subtitle">Manage your weekly schedule</p>
+            </div>
+
+            <div class="filters-section">
+                <select class="filter-select">
+                    <option>Select Day</option>
+                    <option>Monday</option>
+                    <option>Tuesday</option>
+                    <option>Wednesday</option>
+                    <option>Thursday</option>
+                    <option>Friday</option>
+                    <option>Saturday</option>
+                    <option>Sunday</option>
+                </select>
+                <select class="filter-select">
+                    <option>Select Program</option>
+                    <option>Computer Science</option>
+                    <option>Information Technology</option>
+                    <option>Business Administration</option>
+                </select>
+                <select class="filter-select">
+                    <option>Select Course</option>
+                    <option>Programming 101</option>
+                    <option>Database Management</option>
+                    <option>Web Development</option>
+                </select>
+                <button class="apply-filter-btn">Apply Filter</button>
+                <input type="text" class="search-input" placeholder="Search Professor Name...">
+            </div>
+
+            <table class="schedule-table">
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Monday</th>
+                        <th>Tuesday</th>
+                        <th>Wednesday</th>
+                        <th>Thursday</th>
+                        <th>Friday</th>
+                        <th>Saturday</th>
+                        <th>Sunday</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for hour in hours %}
+                    <tr>
+                        <td class="time-cell">{{ hour }}</td>
+                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 </body>
 </html>
