@@ -1,0 +1,330 @@
+/* --- 1. GLOBAL STYLES & LAYOUT --- */
+:root {
+    /* Define consistent color variables based on your existing styles */
+    --maroon-dark: #800000;
+    --maroon-light: #AC0000;
+    --gold: #f5b800;
+    --green-active: #2e8b57;
+    --red-deactivate: #b30000;
+    --bg-light: #f7f7f7;
+    --text-dark: #333;
+    --border-light: #eee;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-light);
+    margin: 0;
+    padding: 0;
+    color: var(--text-dark);
+}
+
+/* --- 2. NAVBAR STYLING --- */
+.navbar {
+    background-color: white;
+    border-bottom: 3px solid var(--gold); 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo-icon {
+    background: linear-gradient(135deg, var(--maroon-light), var(--maroon-dark));
+    border-radius: 12px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(172, 0, 0, 0.3);
+}
+
+.logo-icon svg {
+    width: 25px;
+    height: 25px;
+    fill: white;
+}
+
+.logo-section h1 {
+    color: var(--maroon-light);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.user-section {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.profile-icon {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(172, 0, 0, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.profile-icon svg {
+    fill: var(--maroon-dark);
+    width: 24px;
+    height: 24px;
+}
+
+.user-name {
+    color: var(--maroon-dark);
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.logout-btn {
+    background: linear-gradient(90deg, var(--maroon-dark), var(--gold));
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.logout-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(139, 0, 0, 0.2);
+}
+
+
+/* --- 3. DASHBOARD LAYOUT & CARD STYLES --- */
+.dashboard {
+    display: flex;
+    max-width: 1300px; 
+    margin: 40px auto;
+    padding: 0 30px; 
+    gap: 40px;
+}
+
+.dashboard-left {
+    flex: 1; 
+    min-width: 300px;
+}
+
+.dashboard-right {
+    flex: 2;
+}
+
+.calendar-section, 
+.table-container {
+    background: white;
+    border-radius: 12px; 
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08); 
+}
+
+.dashboard-right h2 {
+    color: var(--maroon-dark);
+    font-weight: 700;
+    margin-top: 0;
+}
+
+/* --- 4. FILTER BUTTONS STYLING --- */
+.filter-section {
+    margin: 15px 0 25px 0;
+    display: flex; 
+    gap: 8px;
+}
+
+/* Use the common class for styling */
+.filter-tab {
+    border: none;
+    border-radius: 20px;
+    padding: 8px 16px; 
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.3s;
+    background-color: #ddd; 
+    color: var(--text-dark);
+}
+
+/* Styling for the currently active filter button (using data-filter from the HTML) */
+.filter-tab.active[data-filter="all"],
+.filter-tab.active[data-filter="active"] {
+    background-color: var(--green-active);
+    color: white;
+    box-shadow: 0 2px 5px rgba(46, 139, 87, 0.3);
+}
+
+.filter-tab.active[data-filter="deactivated"] {
+    background-color: var(--red-deactivate); 
+    color: white;
+    box-shadow: 0 2px 5px rgba(179, 0, 0, 0.3);
+}
+
+.filter-tab:hover {
+    transform: translateY(-1px); 
+}
+
+
+/* --- 5. USER TABLE STYLING --- */
+.table-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px; 
+}
+
+th, td {
+    padding: 12px;
+    border-bottom: 1px solid var(--border-light);
+    text-align: left;
+    font-size: 14px;
+}
+
+/* Table Header (Primary Maroon Color) */
+th {
+    background-color: var(--maroon-dark);
+    color: white;
+    font-weight: 700;
+}
+
+/* Zebra Striping for Neatness */
+tbody tr:nth-child(even) {
+    background-color: #fcfcfc;
+}
+
+tbody tr:hover {
+    background-color: #f2f2f2;
+}
+
+/* Status Text Coloring */
+.status-active { 
+    color: var(--green-active);
+    font-weight: 700;
+}
+
+.status-deactivated { 
+    color: var(--red-deactivate);
+    font-weight: 700;
+}
+
+/* --- 6. ACTION BUTTON STYLING (Activate/Deactivate) --- */
+.action-btn {
+    border: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    color: white;
+    font-size: 13px;
+    font-weight: 600;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    min-width: 90px;
+}
+
+.action-btn.deactivate {
+    /* Use the Red color for Deactivate action */
+    background-color: var(--red-deactivate);
+}
+
+.action-btn.activate {
+    /* Use the Maroon color for Activate action */
+    background-color: var(--maroon-dark); 
+}
+
+.action-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* --- 7. CALENDAR STYLES --- */
+.calendar-title {
+    color: var(--maroon-dark);
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* Calendar Month/Year Text */
+#monthYear { 
+    font-size: 1.3rem; 
+    font-weight: 700;
+    color: var(--maroon-dark);
+}
+
+/* Calendar Table */
+.month-calendar {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+.month-calendar thead th {
+    background-color: var(--maroon-dark);
+    padding: 0.5rem 0.2rem;
+    font-weight: 700;
+    color: white;
+    text-align: center;
+    border-bottom: none;
+    font-size: 0.85rem;
+}
+
+.month-calendar td {
+    width: 14.28%;
+    height: 48px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 0.2rem 0.2rem;
+    position: relative;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+/* Current Day Highlight */
+.month-calendar td.current-day {
+    position: relative; 
+    z-index: 1; 
+    color: white !important; 
+}
+
+.month-calendar td.current-day::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 35px; 
+    height: 35px;
+    background: #9d1414; 
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.05); 
+    z-index: -1; 
+}
+
+/* Media Query (for responsiveness) */
+@media (max-width: 1000px) {
+    .dashboard {
+        flex-direction: column;
+        padding: 20px;
+    }
+    .dashboard-left, .dashboard-right {
+        min-width: 100%;
+    }
+}
