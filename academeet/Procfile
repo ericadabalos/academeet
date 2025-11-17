@@ -1,1 +1,1 @@
-web: gunicorn academeet.wsgi
+web: gunicorn academeet.wsgi:application
