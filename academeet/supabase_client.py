@@ -8,9 +8,10 @@ if os.getenv("USE_ENV_FILE", "0").lower() in ("1", "true", "yes"):
     env_path = os.path.join(os.path.dirname(__file__), ".env")
     load_dotenv(env_path)
 
-# Read credentials from environment variables
-SUPABASE_URL = os.getenv("https://imbbllwwyungzmanpwra.supabase.co")
-SUPABASE_KEY = os.getenv("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImltYmJsbHd3eXVuZ3ptYW5wd3JhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjE0MTMwNzEsImV4cCI6MjA3Njk4OTA3MX0.OlctzzKxgasDSIAtBHNkbSSGt-0Z-XZ20eu3YDH-Pqs")
+# Read credentials from environment variables. Use the conventional names so
+# the deployment environment (Render, Heroku, etc.) can set them.
+SUPABASE_URL = os.getenv("SUPABASE_URL")
+SUPABASE_KEY = os.getenv("SUPABASE_KEY")
 
 _supabase_client: Optional[object] = None
 
@@ -23,6 +24,10 @@ def get_supabase_client():
     global _supabase_client
     if _supabase_client is None:
         if not SUPABASE_URL or not SUPABASE_KEY:
+            # Raise early so callers can handle missing configuration. Many
+            # callers (like get_holidays) catch exceptions and return an
+            # empty list, but raising here makes the missing-config reason
+            # explicit in logs.
             raise RuntimeError("SUPABASE_URL and SUPABASE_KEY must be set in the environment.")
         try:
             from supabase import create_client  # local import to avoid ModuleNotFoundError at import time

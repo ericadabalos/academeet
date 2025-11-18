@@ -30,12 +30,33 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-2&$7vnuba3((b8kpd21!lsh5=&pjuezuib-c$(fe@9mf+w_oxd'
+# Prefer reading SECRET_KEY from environment in production. The hard-coded
+# value remains as a fallback for local development only.
+SECRET_KEY = os.getenv(
+    "SECRET_KEY",
+    'django-insecure-2&$7vnuba3((b8kpd21!lsh5=&pjuezuib-c$(fe@9mf+w_oxd'
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+# Allow toggling via an environment variable (e.g., on Render set DEBUG=1 to
+# enable; by default it's False in production).
+DEBUG = os.getenv("DEBUG", "False").lower() in ("1", "true", "yes")
 
-ALLOWED_HOSTS = ['academeet.onrender.com', 'localhost']
+# Configure ALLOWED_HOSTS from the environment. Provide a sensible default for
+# local development; in production set ALLOWED_HOSTS to your Render service
+# hostname (for example: "my-app.onrender.com"). Use a comma-separated list.
+raw_allowed = os.getenv("ALLOWED_HOSTS", "127.0.0.1,localhost,your-domain.com")
+ALLOWED_HOSTS = [h.strip() for h in raw_allowed.split(",") if h.strip()]
+
+# If your site uses HTTPS behind a proxy (Render does), you may also need to
+# configure trusted CSRF origins. Provide as a comma-separated env var.
+raw_csrf = os.getenv("CSRF_TRUSTED_ORIGINS", "")
+if raw_csrf:
+    # Accept either comma-separated values or a single value
+    CSRF_TRUSTED_ORIGINS = [u.strip() for u in raw_csrf.split(",") if u.strip()]
+else:
+    CSRF_TRUSTED_ORIGINS = []
+
 
 
 # Application definition
