@@ -83,6 +83,32 @@ body{
   border-bottom: 1px solid var(--white);
 }
 
+/* Back button styling */
+.back-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 0 0 20px 0;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.back-link:hover {
+  background-color: #f8f8f8;
+}
+
+.back-link::before {
+  content: "←";
+  margin-right: 6px;
+}
+
 .brand-name {
   color: var(--maroon);
   font-size: 32px;
@@ -261,17 +287,15 @@ body{
 }
 
 body {
-    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #FFD700;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow-x: hidden;
-    overflow-y: auto;
-    position: relative;
-    margin: 0;
-    padding: 0;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #FFD700;
+  min-height: 100vh;
+  /* Do not center the whole page via body (prevents scroll locking). Use .register-page wrapper instead. */
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+  margin: 0;
+  padding: 0;
 }
 
 /* Animated background elements */
@@ -318,16 +342,32 @@ body {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(20px);
     border-radius: 24px;
-    padding: 6rem;
+    padding: 3rem;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
     text-align: center;
     max-width: 1000px;
     width: 90%;
     border: 1px solid rgba(255, 255, 255, 0.2);
     animation: slideUp 0.8s ease-out;
-    margin: 0 auto;
+    margin: 6rem auto 2rem;
 }
 
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    color: var(--red-header);
+    text-decoration: none;
+    margin-bottom: 2.5rem;
+    background: white;
+    border: none;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.back-button:hover {
+    background: rgba(172, 0, 0, 0.15);
+}
 @keyframes slideUp {
     from {
         opacity: 0;
@@ -442,7 +482,7 @@ h1 {
     transition: all 0.3s ease;
     margin-top: 0.5rem;
     position: relative;
-    overflow: hidden;
+    overflow: hidden; 
 }
 
 .login-btn::before {
@@ -574,6 +614,7 @@ h1 {
 
 .signup-form .form-group {
     flex: 1;
+  max-width: 100%; /* ensure form-group in signup uses full width (overrides earlier global .form-row .form-group) */
 }
 
 .signup-form .form-group select {
@@ -592,6 +633,14 @@ h1 {
     border-color: #AC0000;
     box-shadow: 0 0 0 3px rgba(172, 0, 0, 0.1);
     transform: translateY(-2px);
+}
+
+/* Make select boxes visually match text inputs in the signup form */
+.signup-form .input-group select,
+.signup-form .input-group input {
+  box-sizing: border-box;
+  line-height: 1.2;
+  min-height: 52px; /* keep height consistent with inputs */
 }
 
 @media (max-width: 480px) {
@@ -811,6 +860,87 @@ h1 {
   color: var(--red-header);
 }
 
+.eye-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--gray-1);
+  transition: color 0.2s ease;
+  user-select: none;
+}
+
+.password-toggle:hover .eye-icon {
+  color: var(--red-header);
+}
+
+/* Regular form styles */
+.form-title {
+    margin-bottom: 2rem;
+    color: var(--red-header);
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.signup-form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.form-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 1rem;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 14px;
+    background: var(--red-header);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    transition: background-color 0.2s;
+}
+
+.registration-form-side .login-btn:hover {
+    background: #8B0000;
+}
+
+.sign-in-link {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.sign-in-link a {
+    color: var(--red-header);
+    text-decoration: none;
+}
+
+.sign-in-link a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .registration-container {
+        flex-direction: column;
+    }
+    
+    .registration-form-side {
+        max-width: 100%;
+        order: 2;
+    }
+    
+    .branding-side {
+        min-height: auto;
+        order: 1;
+        padding: 4rem 2rem;
+    }
+}
+
+
 /* Enable scrolling when content overflows */
 html, body {
   height: 100%;
@@ -828,4 +958,7 @@ body {
   position: relative;
   overflow-y: auto;
 }
+
+/* Registration redesign removed - previous styles restored */
+
 

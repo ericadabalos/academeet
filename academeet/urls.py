@@ -18,13 +18,20 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('core.urls')),   # include core app urls
+    path('admin_dashboard/', include('admin_dashboard.urls')),
+    path('settings/', include('settings_app.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('professor/', include('professor_inline.urls')), 
+    path('', include('professor_inline.urls')),
 ]
 
 # Serve static files in development (optional but useful)
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.BASE_DIR / "static")
-
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

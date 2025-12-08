@@ -12,7 +12,7 @@
     <div class="bg-shape"></div>
     <div class="bg-shape"></div>
 
-    <a href="{% url 'role_selection' %}" class="back-link">← Back</a>
+    <a href="{% url 'role_selection' %}" class="back-link">Back</a>
 
     <div class="container">
         <div class="logo">
@@ -28,6 +28,9 @@
 
         <form method="POST" class="login-form">
             {% csrf_token %}
+            {% if error %}
+                <div class="form-error">{{ error }}</div>
+            {% endif %}
             <div class="input-group">
                 <input type="email" name="email" placeholder="Email" required>
             </div>
