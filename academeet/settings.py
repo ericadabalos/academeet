@@ -30,12 +30,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-2&$7vnuba3((b8kpd21!lsh5=&pjuezuib-c$(fe@9mf+w_oxd'
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DEBUG", "False").lower() in ("1", "true", "yes")
 
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
+ALLOWED_HOSTS.append(".onrender.com")
 
 
 # Application definition
@@ -93,7 +94,7 @@ if DATABASE_URL:
             DATABASE_URL,
             conn_max_age=600,
             # Allow disabling SSL enforcement via env in dev if needed
-            ssl_require=os.getenv("DB_SSL", "False").lower() in ("1", "true", "yes"),
+            sssl_require=True
         )
     }
 else:
